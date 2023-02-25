@@ -1,0 +1,31 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    architecture: 'x64'
+
+- task: InstallPython@0
+  inputs:
+    versionSpec: '3.x'
+    architecture: 'x64'
+
+- script: |
+    pip install ansible
+  displayName: 'Install Ansible'
+
+- task: GitCheckout@2
+  inputs:
+    repository: 'https://github.com/tonymishler/ansible_demo.git'
+    clean: true
+    fetchDepth: 1
+    path: 'ansible_demo'
+
+- task: AnsiblePlaybook@0
+  inputs:
+    playbook: 'ansible_demo/playbook.yml'
