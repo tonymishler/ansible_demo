@@ -4,7 +4,7 @@
   connection: local 
   become: yes # will execute with elevated prileges
   become_method: sudo #the method that Ansible should use to become the superuser
-  become_user: anthonymishler #the user to act as when performing super user tasks
+  become_user: "{{ app_user }}"
   gather_facts: no # don't gather machine information for this script 
   # vars:
   #   remote_tmp: /tmp
