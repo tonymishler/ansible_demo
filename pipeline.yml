@@ -21,6 +21,11 @@ steps:
   displayName: 'Install Ansible'
 
 - script: |
+    whoami
+  displayName: 'Print current user'
+
+
+- script: |
     git clone --depth 1 https://github.com/tonymishler/ansible_demo.git ansible_demo
   displayName: 'Checkout Ansible Playbook'
 
