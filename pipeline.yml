@@ -16,12 +16,8 @@ steps:
     pip install ansible
   displayName: 'Install Ansible'
 
-- task: GitCheckout@2
-  inputs:
-    repository: 'https://github.com/tonymishler/ansible_demo.git'
-    clean: true
-    fetchDepth: 1
-    path: 'ansible_demo'
+- script: |
+    git clone --depth 1 https://github.com/tonymishler/ansible_demo.git ansible_demo
   displayName: 'Checkout Ansible Playbook'
 
 - script: |
