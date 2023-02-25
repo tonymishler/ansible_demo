@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'macOS-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: UsePythonVersion@0
@@ -10,12 +10,9 @@ steps:
     versionSpec: '3.x'
     architecture: 'x64'
 
-- task: InstallPython@0
-  inputs:
-    versionSpec: '3.x'
-    architecture: 'x64'
-
 - script: |
+    python -m ensurepip
+    python -m pip install --upgrade pip
     pip install ansible
   displayName: 'Install Ansible'
 
@@ -25,7 +22,8 @@ steps:
     clean: true
     fetchDepth: 1
     path: 'ansible_demo'
+  displayName: 'Checkout Ansible Playbook'
 
-- task: AnsiblePlaybook@0
-  inputs:
-    playbook: 'ansible_demo/playbook.yml'
+- script: |
+    ansible-playbook ansible_demo/playbook.yml
+  displayName: 'Run Ansible Playbook'
