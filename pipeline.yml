@@ -1,7 +1,3 @@
-
-And here's the updated pipeline YAML file with the `app_user` variable passed in:
-
-```yaml
 trigger:
 - main
 
