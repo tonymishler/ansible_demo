@@ -1,8 +1,16 @@
+
+And here's the updated pipeline YAML file with the `app_user` variable passed in:
+
+```yaml
 trigger:
 - main
 
 pool:
   vmImage: 'ubuntu-latest'
+
+variables:
+  - name: 'app_user'
+    value: 'myappuser'
 
 steps:
 - task: UsePythonVersion@0
@@ -21,5 +29,5 @@ steps:
   displayName: 'Checkout Ansible Playbook'
 
 - script: |
-    ansible-playbook ansible_demo/playbook.yml
+    ansible-playbook ansible_demo/playbook.yml -e "app_user={{ app_user }}"
   displayName: 'Run Ansible Playbook'
