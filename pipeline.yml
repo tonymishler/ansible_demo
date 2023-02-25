@@ -25,5 +25,5 @@ steps:
   displayName: 'Checkout Ansible Playbook'
 
 - script: |
-    ansible-playbook ansible_demo/playbook.yml -e "app_user={{ app_user }}"
-  displayName: 'Run Ansible Playbook'
+    ansible-playbook ansible_demo/playbook.yml -e app_user="${{ variables.app_user }}"
+
