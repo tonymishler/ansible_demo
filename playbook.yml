@@ -25,7 +25,7 @@
 
   - name: Set Homebrew ownership
     become: yes
-    shell: chown -R "{{ become_user }}:admin" /usr/local/Homebrew
+    shell: chown -R "vsts:admin" /usr/local/Homebrew
     when: homebrew_result.rc != 0
     when: homebrew_result.rc != 0
 
