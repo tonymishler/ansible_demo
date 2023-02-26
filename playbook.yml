@@ -25,8 +25,8 @@
 
   - name: Set Homebrew ownership
     become: yes
-     #ansible_user is predefined 
-    shell: chown -R "{{ ansible_user }}:admin" /usr/local/Homebrew
+    shell: chown -R "{{ become_user }}:admin" /usr/local/Homebrew
+    when: homebrew_result.rc != 0
     when: homebrew_result.rc != 0
 
   - name: Check if Powershell is installed
