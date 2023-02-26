@@ -21,7 +21,7 @@
 
   - name: Install Homebrew
     shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    when: homebrew_result.rc != 0
+    when: homebrew_result.rc = 0
 
   - name: Set Homebrew ownership
     become: yes
