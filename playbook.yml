@@ -12,15 +12,6 @@
 
 
   tasks:
-  - name: Check if Xcode Command Line Tools are installed
-    command: xcode-select -p
-    #changed_when: false
-    register: xcode_tools_result
-    ignore_errors: yes
-
-  - name: Install Xcode Command Line Tools
-    command: xcode-select --install
-    when: xcode_tools_result.rc != 0
 
   - name: Check if Homebrew is installed
     command: brew --version
@@ -43,6 +34,16 @@
     #changed_when: false
     register: powershell_result
     ignore_errors: yes
+    
+  - name: Check if Xcode Command Line Tools are installed
+    command: xcode-select -p
+    #changed_when: false
+    register: xcode_tools_result
+    ignore_errors: yes
+
+  - name: Install Xcode Command Line Tools
+    command: xcode-select --install
+    when: xcode_tools_result.rc != 0
 
   - name: Install Powershell
     shell: brew install --cask powershell
