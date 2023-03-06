@@ -13,3 +13,6 @@ brew install python
 # Install Ansible using pip
 pip3 install ansible
 
+# Run Ansible playbook
+ansible-playbook playbook.yml
+
