@@ -3,4 +3,5 @@ a demonstration running an ansible script standing up a mac vm build agent with 
 
 
 ## Installation
+- Pull down this repo into your projects directory
 - Run setup.sh in your terminal on mac
