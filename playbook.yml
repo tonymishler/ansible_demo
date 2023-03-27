@@ -21,22 +21,6 @@
     command: xcode-select --install
     when: xcode_tools_result.rc != 0
 
-  - name: Check if Homebrew is installed
-    command: brew --version
-    #changed_when: false
-    register: homebrew_result
-    ignore_errors: yes
-
-  - name: Install Homebrew
-    shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    when: homebrew_result.rc != 0
-
-  - name: Set Homebrew ownership
-    become: yes
-     #ansible_user is predefined 
-    shell: chown -R "{{ ansible_user }}:admin" /usr/local/Homebrew
-    when: homebrew_result.rc != 0
-
   - name: Check if Powershell is installed
     command: pwsh -v
     #changed_when: false
