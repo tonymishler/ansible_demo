@@ -15,6 +15,7 @@
     command: xcode-select -p
     #changed_when: false
     register: xcode_tools_result
+    failed_when: xcode_tools_result.rc != 0 and "CLT not found" not in xcode_tools_result.stderr
     ignore_errors: yes
 
   - name: Install Xcode Command Line Tools
@@ -94,16 +95,3 @@
     failed_when: node_version.rc != 0
     check_mode: no
 
-  - name: Check if Python is installed
-    command: python -V
-    #changed_when: false
-    register: python_result
-    ignore_errors: true
-    failed_when: python_result.rc not in [0, 2]
-
-
-  - name: Install Python with Homebrew
-    homebrew:
-      name: python
-      state: present
-    when: python_result.rc != 0
