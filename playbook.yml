@@ -13,14 +13,6 @@
 
   tasks:
 
-  - name: Find Homebrew installation directory
-    command: which brew
-    register: homebrew_location
-
-  - name: Set Homebrew ownership
-    become: yes
-    shell: chown -R "testuser:admin" {{ homebrew_location.stdout }}
-
   - name: Check if Powershell is installed
     command: pwsh -v
     #changed_when: false
